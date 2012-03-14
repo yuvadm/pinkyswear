@@ -13,6 +13,11 @@ CLOUDANT_AUTH = ('pinkyswear', 'abc123')
 def index(name='home'):
     return template('index.html', sig=None)
 
+@route('/js/:filename')
+def index(filename=None):
+    root = os.path.join(os.path.dirname(__file__), 'js')
+    return static_file(filename, root=root, mimetype='text/javascript')
+
 @route('/s/:id')
 def sig(id='home'):
     url = CLOUDANT_BASE + id
