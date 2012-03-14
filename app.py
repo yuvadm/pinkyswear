@@ -1,3 +1,4 @@
+import json
 import os
 import random
 import requests
@@ -15,10 +16,10 @@ def sig(id='home'):
 
 @post('/s')
 def sig(id='home'):
-    data = request.POST.output
-    id = ''.join(random.choice(string.ascii_lowercase + string.digits) for x in range(6))
-    url = 'https://pinkyswear.cloudant.com/pinkyswear/%s' % id
-    requests.post(url, auth=('pinkyswear', 'abc123'), data=data)
-    return id
+    data = json.dumps(request.POST['output'])
+    url = 'https://pinkyswear.cloudant.com/pinkyswear/'
+    headers = { 'content-type' : 'application/json' }
+    r = requests.post(url, auth=('pinkyswear', 'abc123'), data=data, headers=headers)
+    return r.content
 
 run(host='localhost', port=8000)
