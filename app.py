@@ -1,11 +1,12 @@
+import os
 import random
 import string
 
-from bottle import route, run
+from bottle import post, route, run, static_file
 
 @route('/')
 def index(name='home'):
-    return '<p><b>Homepage</b></p><p>Insert widget here</p>'
+    return static_file('index.html', root=os.path.dirname(__file__), mimetype='text/html')
 
 @route('/s/:id')
 def sig(id='home'):
