@@ -30,7 +30,7 @@
     $(document).ready(function() {
       var sig = $('.sigPad').signaturePad({drawOnly:true,errorMessage:"Write the swear",errorMessageDraw:"sign the swear bro"});
       %if sig:
-	     sig.regenerate({{ sig }});
+	     sig.regenerate({{!sig}});
       %end
     });
   </script>
