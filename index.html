@@ -29,7 +29,9 @@
   <script>
     $(document).ready(function() {
       var sig = $('.sigPad').signaturePad({drawOnly:true,errorMessage:"Write the swear",errorMessageDraw:"sign the swear bro"});
-	  //sig.regenerate(sig);
+      %if sig:
+	     sig.regenerate({{ sig }});
+      %end
     });
   </script>
   <script src="https://raw.github.com/yuvadm/pinkyswear/master/js/json2.min.js"></script>

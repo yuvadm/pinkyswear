@@ -4,17 +4,18 @@ import random
 import requests
 import string
 
-from bottle import post, route, request, run, static_file
+from bottle import post, route, request, run, static_file, template
 
 @route('/')
 def index(name='home'):
-    return static_file('index.html', root=os.path.dirname(__file__), mimetype='text/html')
+    return template('index.html', sig=None)
 
 @route('/s/:id')
 def sig(id='home'):
     url = 'https://pinkyswear.cloudant.com/pinkyswear/%s' % id
     r = requests.get(url, auth=('pinkyswear', 'abc123'))
-    return json.loads(r.content)['s']
+    sig = json.loads(r.content)['s']
+    return template('index.html', sig=sig)
 
 @post('/s')
 def sig(id='home'):
