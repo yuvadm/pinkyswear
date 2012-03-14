@@ -4,24 +4,42 @@
     <meta charset="utf-8">
     <title>Pinky Swear</title>
     <style type="text/css">
-      body { font: normal 100.01%/1.375 "Helvetica Neue",Helvetica,Arial,sans-serif; }
+      body {
+        background: #FFE5B9;
+        color: #BE9248;
+        font-size: 1.4em;
+      }
+      .writing {
+        font-family: 'Euphoria Script', cursive;
+        font-size: 1.3em;
+      }
+      input.writing {
+        background: #FFE5B9;
+        color: #BE9248;
+        border: 0px;
+        border-bottom: 1px dotted;
+      }
     </style>
     <link rel="stylesheet" href="/js/jquery.signaturepad.css">
+    <link href='http://fonts.googleapis.com/css?family=Euphoria+Script&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]><script src="
     <link rel="stylesheet" href="/js/flashcanvas.js"></script><![endif]-->
      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   </head>
   <body>
     <form method="post" action="/s" class="sigPad">
-      <label for="name">Your swear</label>
-      <input type="text" name="name" id="name" class="name">
-      <p class="drawItDesc">Draw your signature</p>`
-        <a class="clearButton" href="#">clear</a>
+      <span>I, </span>
+      <input name="name" id="name" class="writing">
+      <span>, hereby declare:</span><br/>
+      <input name="swear" id="swear" class="writing">
+
+      <p class="drawItDesc">Signed,</p>
       <div class="sig sigWrapper">
         <div class="typed"></div>
         <canvas class="pad" width="198" height="55"></canvas>
         <input type="hidden" name="output" class="output">
       </div>
+      <button class="clearButton" href="#">clear</button>
       <button type="submit">I pinky swear</button>
     </form>
 
