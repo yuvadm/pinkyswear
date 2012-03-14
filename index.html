@@ -28,7 +28,8 @@
   <script src="js/jquery.signaturepad.min.js"></script>
   <script>
     $(document).ready(function() {
-      $('.sigPad').signaturePad({drawOnly:true,errorMessage:"Write the swear",errorMessageDraw:"sign the swear bro"});
+      var sig = $('.sigPad').signaturePad({drawOnly:true,errorMessage:"Write the swear",errorMessageDraw:"sign the swear bro"});
+	  //sig.regenerate(sig);
     });
   </script>
   <script src="js/json2.min.js"></script>
