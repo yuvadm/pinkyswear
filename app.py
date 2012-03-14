@@ -14,7 +14,7 @@ def index(name='home'):
 def sig(id='home'):
     url = 'https://pinkyswear.cloudant.com/pinkyswear/%s' % id
     r = requests.get(url, auth=('pinkyswear', 'abc123'))
-    return r.content
+    return json.loads(r.content)['s']
 
 @post('/s')
 def sig(id='home'):
