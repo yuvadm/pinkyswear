@@ -12,11 +12,13 @@ def index(name='home'):
 
 @route('/s/:id')
 def sig(id='home'):
-    return '<p><b>Signature</b></p><p>%s</p>' % id
+    url = 'https://pinkyswear.cloudant.com/pinkyswear/%s' % id
+    r = requests.get(url, auth=('pinkyswear', 'abc123'))
+    return r.content
 
 @post('/s')
 def sig(id='home'):
-    data = json.dumps(request.POST['output'])
+    data = json.dumps({ 's' : request.POST['output'] })
     url = 'https://pinkyswear.cloudant.com/pinkyswear/'
     headers = { 'content-type' : 'application/json' }
     r = requests.post(url, auth=('pinkyswear', 'abc123'), data=data, headers=headers)
