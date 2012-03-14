@@ -1,8 +1,9 @@
 import os
 import random
+import requests
 import string
 
-from bottle import post, route, run, static_file
+from bottle import post, route, request, run, static_file
 
 @route('/')
 def index(name='home'):
@@ -14,7 +15,10 @@ def sig(id='home'):
 
 @post('/s')
 def sig(id='home'):
+    data = request.POST.output
     id = ''.join(random.choice(string.ascii_lowercase + string.digits) for x in range(6))
+    url = 'https://pinkyswear:abc123@pinkyswear.cloudant.com/pinkyswear/%s' % id
+    requests.post(url, data=data)
     return id
 
 run(host='localhost', port=8000)
