@@ -41,4 +41,5 @@ def sig():
     r = requests.put(url, auth=CLOUDANT_AUTH, data=json.dumps(data), headers=headers)
     redirect('/s/%s' % json.loads(r.content)['id'])
 
-run(host='localhost', port=8000)
+#run(host='localhost', port=8000)
+run(server='gae')
