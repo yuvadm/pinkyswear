@@ -22,16 +22,23 @@ def index(filename=None):
 def sig(id='home'):
     url = CLOUDANT_BASE + id
     r = requests.get(url, auth=CLOUDANT_AUTH)
-    sig = json.loads(r.content)['s']
-    return template('index.html', sig=sig)
+    sig   = json.loads(r.content)['s']
+    name  = json.loads(r.content)['name']
+    swear = json.loads(r.content)['swear']
+    
+    return template('index.html', sig=sig, name=name, swear=swear)
 
 @post('/s')
 def sig():
     id = ''.join(random.choice(string.ascii_lowercase + string.digits) for x in range(6))
-    data = json.dumps({ 's' : request.POST['output'] })
+    data = {}
+    data["name"] = request.POST['name']
+    data["swear"] = request.POST['swear']
+    data["s"] = request.POST['output']
+    
     url = CLOUDANT_BASE + id
     headers = { 'content-type' : 'application/json' }
-    r = requests.put(url, auth=CLOUDANT_AUTH, data=data, headers=headers)
+    r = requests.put(url, auth=CLOUDANT_AUTH, data=json.dumps(data), headers=headers)
     redirect('/s/%s' % json.loads(r.content)['id'])
 
 run(host='localhost', port=8000)

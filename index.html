@@ -54,6 +54,10 @@
         %if sig:
           sig.regenerate({{!sig}});
         %end
+        %setdefault("name", "")
+        $("#name").val("{{name}}");
+        %setdefault("swear", "")
+        $("#swear").val("{{swear}}");
       });
     </script>
     <script src="/js/json2.min.js"></script>
