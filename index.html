@@ -41,8 +41,10 @@
         <canvas class="pad" width="198" height="55"></canvas>
         <input type="hidden" name="output" class="output">
       </div>
+     %if not sig:
       <button class="clearButton" href="#">clear</button>
       <button type="submit">I pinky swear</button>
+     %end
     </form>
 
     <script src="/js/jquery.signaturepad.min.js"></script>
@@ -52,6 +54,9 @@
           drawOnly: true,
           errorMessage: 'Write the swear',
           errorMessageDraw: 'sign the swear bro'
+          %if sig:
+          ,displayOnly: true
+          %end
         });
         %if sig:
           sig.regenerate({{!sig}});
