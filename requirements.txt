@@ -1,2 +1,2 @@
 bottle
-requests
+requests==0.6.2
