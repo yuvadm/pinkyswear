@@ -6,7 +6,7 @@ threadsafe: false
 
 handlers:
 - url: /js
-  static_dir: static
+  static_dir: js
 
 - url: /.*
   script: app.py
