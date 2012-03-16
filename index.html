@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=320, initial-scale=0.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>Pinky Swear</title>
     <style type="text/css">
@@ -21,6 +21,8 @@
         border-bottom: 1px dotted;
       }
     </style>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="/js/jquery.signaturepad.css">
     <link href='http://fonts.googleapis.com/css?family=Euphoria+Script&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]><script src="
@@ -42,8 +44,8 @@
         <input type="hidden" name="output" class="output">
       </div>
      %if not sig:
-      <button class="clearButton" href="#">clear</button>
-      <button type="submit">I pinky swear</button>
+      <input type="button" id="clear" class="btn btn-large" value="Clear"></input>
+      <input type="submit" class="btn btn-primary btn-large" value="I pinky swear"></input>
      %end
     </form>
 
@@ -53,7 +55,8 @@
         var sig = $('.sigPad').signaturePad({
           drawOnly: true,
           errorMessage: 'Write the swear',
-          errorMessageDraw: 'sign the swear bro'
+          errorMessageDraw: 'sign the swear bro',
+          clear: '#clear'
           %if sig:
           ,displayOnly: true
           %end
