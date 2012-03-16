@@ -44,8 +44,8 @@
         <input type="hidden" name="output" class="output">
       </div>
      %if not sig:
-      <input type="button" id="clear" class="btn btn-large" value="Clear"></input>
-      <input type="submit" class="btn btn-primary btn-large" value="I pinky swear"></input>
+      <input type="button" id="clear" class="btn" value="Clear">
+      <input type="submit" class="btn btn-primary" value="I pinky swear">
      %end
     </form>
 
@@ -55,7 +55,7 @@
         var sig = $('.sigPad').signaturePad({
           drawOnly: true,
           errorMessage: 'Write the swear',
-          errorMessageDraw: 'sign the swear bro',
+          errorMessageDraw: 'Sign the swear bro',
           clear: '#clear'
           %if sig:
           ,displayOnly: true
@@ -64,10 +64,10 @@
         %if sig:
           sig.regenerate({{!sig}});
         %end
-        %setdefault("name", "")
-        $("#name").val("{{name}}");
-        %setdefault("swear", "")
-        $("#swear").val("{{swear}}");
+        %setdefault('name', '')
+        $('#name').val('{{name}}');
+        %setdefault('swear', '')
+        $('#swear').val('{{swear}}');
       });
     </script>
     <script src="/js/json2.min.js"></script>
