@@ -7,7 +7,7 @@ import random
 import requests
 import string
 
-from bottle import post, route, redirect, request, run, static_file, template
+from bottle import app, post, route, redirect, request, run, static_file, template
 
 CLOUDANT_BASE = 'https://pinkyswear.cloudant.com/pinkyswear/'
 CLOUDANT_AUTH = ('pinkyswear', 'abc123')
@@ -49,5 +49,5 @@ def sig():
     r = requests.put(url, auth=CLOUDANT_AUTH, data=json.dumps(data), headers=headers)
     redirect('/s/%s' % json.loads(r.content)['id'])
 
-#run(host='localhost', port=8000)
-run(server='gae')
+# run(host='localhost', port=8000)
+application = app()

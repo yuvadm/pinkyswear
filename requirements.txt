@@ -1,2 +1,2 @@
-bottle
-requests==0.6.2
+-e git+https://github.com/defnull/bottle.git#egg=bottle
+requests
