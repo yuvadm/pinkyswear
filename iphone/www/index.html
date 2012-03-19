@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Pinky Swear</title>
+    <style type="text/css">
+      body {
+        background: #FFE5B9;
+        color: #BE9248;
+        font-size: 1.4em;
+      }
+      .writing {
+        font-family: 'Euphoria Script', cursive;
+        font-size: 1.3em;
+      }
+      input.writing {
+        background: #FFE5B9;
+        color: #BE9248;
+        border: 0px;
+        border-bottom: 1px dotted;
+      }
+    </style>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="js/jquery.signaturepad.css">
+        
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery.signaturepad.min.js"></script>
+        
+  </head>
+  
+    <body>
+    <form method="post" action="/s" class="sigPad">
+      <span>I, </span>
+      <input name="name" id="name" class="writing"><br/>
+      <span>, hereby declare:</span><br/>
+      <input name="swear" id="swear" class="writing">
+
+      <p >Signed,</p>
+      <div class="sig sigWrapper">
+        <div class="typed"></div>
+        <canvas class="pad" width="198" height="55"></canvas>
+        <input type="hidden" name="output" class="output">
+      </div>
+
+      <input type="button" id="clear" class="btn" value="Clear">
+      <input type="submit" class="btn btn-primary" value="I pinky swear">
+
+    </form>
+
+    <script>
+      $(document).ready(function() {
+        var sig = $('.sigPad').signaturePad({
+          drawOnly: true,
+          errorMessage: 'Write the swear',
+          errorMessageDraw: 'Sign the swear bro',
+          clear: '#clear'
+        });
+
+      });
+    </script>
+        
+  </body>
+</html>
